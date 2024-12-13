@@ -1,0 +1,24 @@
+void smt(int timeframe) {
+    Front_Right(Hip_Left_angle, Lift_H_angle);
+    Back_Right(Hip_Default_angle, Hostile_angle);
+    Back_Left(Hip_Right_angle, Lift_H_angle);
+    Front_Left(Hip_Default_angle, Hostile_angle);
+    delay(timeframe);
+    Front_Right(Hip_Default_angle, Hostile_angle);
+    Back_Right(Hip_Default_angle, Hostile_angle);
+    Back_Left(Hip_Default_angle, Hostile_angle);
+    Front_Left(Hip_Default_angle, Hostile_angle);
+}
+
+void smt(int timeframe) {
+    delay(timeframe);
+    Front_Right(Hip_Default_angle, Hostile_angle);
+    Back_Right(Hip_Left_angle, Lift_H_angle);
+    Back_Left(Hip_Default_angle, Hostile_angle);
+    Front_Left(Hip_Right_angle, Lift_H_angle);
+    delay(timeframe);
+    Front_Right(Hip_Default_angle, Hostile_angle);
+    Back_Right(Hip_Default_angle, Hostile_angle);
+    Back_Left(Hip_Default_angle, Hostile_angle);
+    Front_Left(Hip_Default_angle, Hostile_angle);
+}

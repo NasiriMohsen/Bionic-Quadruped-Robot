@@ -20,7 +20,7 @@
 #define Offset_Hip_BL 0
 #define Offset_Knee_BR 0
 #define Offset_Knee_FR 0
-#define Offset_Knee_FL -10
+#define Offset_Knee_FL -9
 #define Offset_Knee_BL 0
 
 // Servo limits
@@ -29,18 +29,27 @@
 
 // Angle definitions
 #define Hip_Default_angle 90
+
+#define Hip_Left_angle 135
+#define Hip_Right_angle 45
+
+#define Hip_Point_Left_angle 110
+#define Hip_Point_Right_angle 70
+
+#define Hip_Movement_Left_angle 135
+#define Hip_Movement_Right_angle 45
+
 #define Flat_angle 110
 #define Hostile_angle 60
 #define Normal_angle 35
 #define Compressed_angle 0
+
 #define Lean_H_angle 100
 #define Lean_N_angle 110
 #define Point_H_angle 130
 #define Point_N_angle 130
 #define Lift_H_angle 90
 #define Lift_N_angle 65
-#define Hip_Left_angle 135
-#define Hip_Right_angle 45
 
 // Function prototypes for individual leg control
 void Front_Right(int hip, int knee);
@@ -49,6 +58,9 @@ void Back_Right(int hip, int knee);
 void Back_Left(int hip, int knee);
 
 // Function prototypes for poses
+void Balance_Knee(int hip, int knee, float pitch, float roll);
+void Balance_Hip(int hip, int knee, float pitch, float roll);
+void Balance_All(int hip, int knee, float knee_pitch, float knee_roll, float hip_pitch, float hip_roll);
 void Flat();
 void Hostile();
 void Normal();
@@ -73,6 +85,10 @@ void Turn_Left_Normal_R(int timeframe);
 void Turn_Right_Normal_R(int timeframe);
 void Turn_Left_Normal_L(int timeframe);
 void Turn_Right_Normal_L(int timeframe);
+void Hostile_Forward();
+void Improved_Hostile_Forward();
+void My_Forward();
+void Toggle_Motors();
 
 // Setup function for legs
 void Setup_Legs();
