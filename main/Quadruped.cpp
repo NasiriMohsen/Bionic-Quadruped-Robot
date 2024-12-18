@@ -438,130 +438,144 @@ void Turn_Right_Normal_L(int timeframe) {
 
 
 
-void Hostile_Forward() {
-  Front_Right(Hip_Movement_Left_angle, Lift_H_angle);
-  Back_Right(Hip_Default_angle, Hostile_angle);
-  Back_Left(Hip_Movement_Right_angle, Lift_H_angle);
-  Front_Left(Hip_Default_angle, Hostile_angle);
+void Forward() {
+  Front_Right (Hip_Default_angle, Normal_angle);
+  Back_Right  (Hip_Left_angle, Lift_H_angle);
+  Back_Left   (Hip_Default_angle, Normal_angle);
+  Front_Left  (Hip_Right_angle, Lift_H_angle);
   delay(125);
-  Front_Right(Hip_Movement_Left_angle, Hostile_angle);
-  Back_Right(Hip_Default_angle, Hostile_angle);
-  Back_Left(Hip_Movement_Right_angle, Hostile_angle);
-  Front_Left(Hip_Default_angle, Hostile_angle);
+  Front_Right (Hip_Right_angle, Normal_angle);
+  Back_Right  (Hip_Left_angle, Normal_angle);
+  Back_Left   (Hip_Left_angle, Normal_angle);
+  Front_Left  (Hip_Right_angle, Normal_angle);
   delay(125);
-  Front_Right(Hip_Default_angle, Hostile_angle);
-  Back_Right(Hip_Default_angle, Hostile_angle);
-  Back_Left(Hip_Default_angle, Hostile_angle);
-  Front_Left(Hip_Default_angle, Hostile_angle);
+  Front_Right (Hip_Left_angle, Lift_H_angle);
+  Back_Right  (Hip_Default_angle, Normal_angle);
+  Back_Left   (Hip_Right_angle, Lift_H_angle);
+  Front_Left  (Hip_Default_angle, Normal_angle);
   delay(125);
-  Front_Right(Hip_Default_angle, Hostile_angle);
-  Back_Right(Hip_Movement_Left_angle, Lift_H_angle);
-  Back_Left(Hip_Default_angle, Hostile_angle);
-  Front_Left(Hip_Movement_Right_angle, Lift_H_angle);
+  Front_Right (Hip_Left_angle, Normal_angle);
+  Back_Right  (Hip_Right_angle, Normal_angle);
+  Back_Left   (Hip_Right_angle, Normal_angle);
+  Front_Left  (Hip_Left_angle, Normal_angle);
   delay(125);
-  Front_Right(Hip_Default_angle, Hostile_angle);
-  Back_Right(Hip_Movement_Left_angle, Hostile_angle);
-  Back_Left(Hip_Default_angle, Hostile_angle);
-  Front_Left(Hip_Movement_Right_angle, Hostile_angle);
+}
+
+void Backward() {
+  Front_Right (Hip_Default_angle, Normal_angle);
+  Back_Right  (Hip_Right_angle, Lift_H_angle);
+  Back_Left   (Hip_Default_angle, Normal_angle);
+  Front_Left  (Hip_Left_angle, Lift_H_angle);
   delay(125);
-  Front_Right(Hip_Default_angle, Hostile_angle);
-  Back_Right(Hip_Default_angle, Hostile_angle);
-  Back_Left(Hip_Default_angle, Hostile_angle);
-  Front_Left(Hip_Default_angle, Hostile_angle);
+  Front_Right (Hip_Left_angle, Normal_angle);
+  Back_Right  (Hip_Right_angle, Normal_angle);
+  Back_Left   (Hip_Right_angle, Normal_angle);
+  Front_Left  (Hip_Left_angle, Normal_angle);
+  delay(125);
+  Front_Right (Hip_Right_angle, Lift_H_angle);
+  Back_Right  (Hip_Default_angle, Normal_angle);
+  Back_Left   (Hip_Left_angle, Lift_H_angle);
+  Front_Left  (Hip_Default_angle, Normal_angle);
+  delay(125);
+  Front_Right (Hip_Right_angle, Normal_angle);
+  Back_Right  (Hip_Left_angle, Normal_angle);
+  Back_Left   (Hip_Left_angle, Normal_angle);
+  Front_Left  (Hip_Right_angle, Normal_angle);
+  delay(125);
+}
+
+void Left() {
+  Front_Right  (Hip_Left_angle, Lift_H_angle);
+  Back_Right   (Hip_Default_angle, Normal_angle);
+  Back_Left    (Hip_Right_angle, Lift_H_angle);
+  Front_Left   (Hip_Default_angle, Normal_angle);
+  delay(125);
+  Front_Right  (Hip_Left_angle, Normal_angle);
+  Back_Right   (Hip_Left_angle, Normal_angle);
+  Back_Left    (Hip_Right_angle, Normal_angle);
+  Front_Left   (Hip_Right_angle, Normal_angle);
+  delay(125);
+  Front_Right  (Hip_Default_angle, Normal_angle);
+  Back_Right   (Hip_Right_angle, Lift_H_angle);
+  Back_Left    (Hip_Default_angle, Normal_angle);
+  Front_Left   (Hip_Left_angle, Lift_H_angle);
+  delay(125);
+  Front_Right  (Hip_Right_angle, Normal_angle);
+  Back_Right   (Hip_Right_angle, Normal_angle);
+  Back_Left    (Hip_Left_angle, Normal_angle);
+  Front_Left   (Hip_Left_angle, Normal_angle);
+  delay(125);
+}
+
+void Right() {
+  Front_Right  (Hip_Right_angle, Lift_H_angle);
+  Back_Right   (Hip_Default_angle, Normal_angle);
+  Back_Left    (Hip_Left_angle, Lift_H_angle);
+  Front_Left   (Hip_Default_angle, Normal_angle);
+  delay(125);
+  Front_Right  (Hip_Right_angle, Normal_angle);
+  Back_Right   (Hip_Right_angle, Normal_angle);
+  Back_Left    (Hip_Left_angle, Normal_angle);
+  Front_Left   (Hip_Left_angle, Normal_angle);
+  delay(125);
+  Front_Right  (Hip_Default_angle, Normal_angle);
+  Back_Right   (Hip_Left_angle, Lift_H_angle);
+  Back_Left    (Hip_Default_angle, Normal_angle);
+  Front_Left   (Hip_Right_angle, Lift_H_angle);
+  delay(125);
+  Front_Right  (Hip_Left_angle, Normal_angle);
+  Back_Right   (Hip_Left_angle, Normal_angle);
+  Back_Left    (Hip_Right_angle, Normal_angle);
+  Front_Left   (Hip_Right_angle, Normal_angle);
   delay(125);
 }
 
 
-
-void My_Forward() {
-  Front_Right(Hip_Default_angle, Hostile_angle);
-  Back_Right(Hip_Default_angle, Lift_H_angle);
-  Back_Left(Hip_Default_angle, Hostile_angle);
-  Front_Left(Hip_Default_angle, Hostile_angle);
-  delay(100);
-  Front_Right(Hip_Default_angle, Hostile_angle);
-  Back_Right(Hip_Movement_Left_angle, Lift_H_angle);
-  Back_Left(Hip_Default_angle, Hostile_angle);
-  Front_Left(Hip_Default_angle, Hostile_angle);
+void Turn_Left() {
+  Front_Right (Hip_Default_angle, Normal_angle);
+  Back_Right  (Hip_Left_angle, Lift_H_angle);
+  Back_Left   (Hip_Right_angle, Normal_angle);
+  Front_Left  (Hip_Default_angle, Lift_H_angle);
   delay(125);
-  Front_Right(Hip_Default_angle, Hostile_angle);
-  Back_Right(Hip_Movement_Left_angle, Hostile_angle);
-  Back_Left(Hip_Default_angle, Lift_H_angle);
-  Front_Left(Hip_Default_angle, Hostile_angle);
+  Front_Right (Hip_Right_angle, Normal_angle);
+  Back_Right  (Hip_Left_angle, Normal_angle);
+  Back_Left   (Hip_Right_angle, Normal_angle);
+  Front_Left  (Hip_Left_angle, Normal_angle);
   delay(125);
-  Front_Right(Hip_Movement_Left_angle, 75);
-  Back_Right(Hip_Movement_Left_angle, Hostile_angle);
-  Back_Left(Hip_Movement_Right_angle, Hostile_angle);
-  Front_Left(Hip_Movement_Right_angle, 75);
+  Front_Right (Hip_Left_angle, Lift_H_angle);
+  Back_Right  (Hip_Default_angle, Normal_angle);
+  Back_Left   (Hip_Default_angle, Lift_H_angle);
+  Front_Left  (Hip_Right_angle, Normal_angle);
   delay(125);
-  Front_Right(Hip_Movement_Left_angle, Hostile_angle);
-  Back_Right(Hip_Default_angle, Hostile_angle);
-  Back_Left(Hip_Default_angle, Hostile_angle);
-  Front_Left(Hip_Movement_Right_angle, Hostile_angle);
-  delay(125);
-  Front_Right(Hip_Default_angle, Hostile_angle);
-  Back_Right(Hip_Default_angle, Hostile_angle);
-  Back_Left(Hip_Default_angle, Hostile_angle);
-  Front_Left(Hip_Default_angle, Hostile_angle);
+  Front_Right (Hip_Left_angle, Normal_angle);
+  Back_Right  (Hip_Right_angle, Normal_angle);
+  Back_Left   (Hip_Left_angle, Normal_angle);
+  Front_Left  (Hip_Right_angle, Normal_angle);
   delay(125);
 }
 
-void Improved_Hostile_Forward() {
-  Front_Right(Hip_Default_angle, Hostile_angle);
-  Back_Right(Hip_Movement_Left_angle, Lift_H_angle);
-  Back_Left(Hip_Default_angle, Hostile_angle);
-  Front_Left(Hip_Default_angle, Hostile_angle);
+void Turn_Right() {
+  Front_Right (Hip_Default_angle, Normal_angle);
+  Back_Right  (Hip_Right_angle, Lift_H_angle);
+  Back_Left   (Hip_Left_angle, Normal_angle);
+  Front_Left  (Hip_Default_angle, Lift_H_angle);
   delay(125);
-  Front_Right(Hip_Default_angle, Hostile_angle);
-  Back_Right(Hip_Movement_Left_angle, Hostile_angle);
-  Back_Left(Hip_Default_angle, Hostile_angle);
-  Front_Left(Hip_Default_angle, Hostile_angle);
+  Front_Right (Hip_Left_angle, Normal_angle);
+  Back_Right  (Hip_Right_angle, Normal_angle);
+  Back_Left   (Hip_Left_angle, Normal_angle);
+  Front_Left  (Hip_Right_angle, Normal_angle);
   delay(125);
-  Front_Right(Hip_Movement_Left_angle, Lift_H_angle);
-  Back_Right(Hip_Movement_Left_angle, Hostile_angle);
-  Back_Left(Hip_Default_angle, Hostile_angle);
-  Front_Left(Hip_Default_angle, Hostile_angle);
+  Front_Right (Hip_Right_angle, Lift_H_angle);
+  Back_Right  (Hip_Default_angle, Normal_angle);
+  Back_Left   (Hip_Default_angle, Lift_H_angle);
+  Front_Left  (Hip_Left_angle, Normal_angle);
   delay(125);
-  Front_Right(Hip_Movement_Left_angle, Hostile_angle);
-  Back_Right(Hip_Movement_Left_angle, Hostile_angle);
-  Back_Left(Hip_Default_angle, Hostile_angle);
-  Front_Left(Hip_Default_angle, Hostile_angle);
+  Front_Right (Hip_Right_angle, Normal_angle);
+  Back_Right  (Hip_Left_angle, Normal_angle);
+  Back_Left   (Hip_Right_angle, Normal_angle);
+  Front_Left  (Hip_Left_angle, Normal_angle);
   delay(125);
-  Front_Right(Hip_Default_angle, Hostile_angle);
-  Back_Right(Hip_Default_angle, Hostile_angle);
-  Back_Left(Hip_Default_angle, Hostile_angle);
-  Front_Left(Hip_Default_angle, Hostile_angle);
-  delay(125);
-
-  Front_Right(Hip_Default_angle, Hostile_angle);
-  Back_Right(Hip_Default_angle, Hostile_angle);
-  Back_Left(Hip_Movement_Right_angle, Lift_H_angle);
-  Front_Left(Hip_Default_angle, Hostile_angle);
-  delay(125);
-  Front_Right(Hip_Default_angle, Hostile_angle);
-  Back_Right(Hip_Default_angle, Hostile_angle);
-  Back_Left(Hip_Movement_Right_angle, Hostile_angle);
-  Front_Left(Hip_Default_angle, Hostile_angle);
-  delay(125);
-  Front_Right(Hip_Default_angle, Hostile_angle);
-  Back_Right(Hip_Default_angle, Hostile_angle);
-  Back_Left(Hip_Movement_Right_angle, Hostile_angle);
-  Front_Left(Hip_Movement_Right_angle, Lift_H_angle);
-  delay(125);
-  Front_Right(Hip_Default_angle, Hostile_angle);
-  Back_Right(Hip_Default_angle, Hostile_angle);
-  Back_Left(Hip_Movement_Right_angle, Hostile_angle);
-  Front_Left(Hip_Movement_Right_angle, Hostile_angle);
-  delay(125);
-  Front_Right(Hip_Default_angle, Hostile_angle);
-  Back_Right(Hip_Default_angle, Hostile_angle);
-  Back_Left(Hip_Default_angle, Hostile_angle);
-  Front_Left(Hip_Default_angle, Hostile_angle);
-  delay(125);
-
 }
-
-
 
 void Toggle_Motors() {
   if (Hip_BR.attached() || Hip_FR.attached() || Hip_FL.attached() || Hip_BL.attached() || Knee_BR.attached() || Knee_FR.attached() || Knee_FL.attached() || Knee_BL.attached()) {

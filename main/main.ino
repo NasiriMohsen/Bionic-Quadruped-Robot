@@ -38,10 +38,26 @@ void loop() {
   }
 //------------------------------------------------- 
   if (input == "run") {
-    Front_Right(Hip_Default_angle, 40);
-    Back_Right(Hip_Default_angle, 40);
-    Back_Left(Hip_Default_angle, 40);
-    Front_Left(Hip_Default_angle, 40);
+    Front_Right (Hip_Default_angle, Hostile_angle);
+    Back_Right  (Hip_Left_angle, Lift_H_angle);
+    Back_Left   (Hip_Default_angle, Hostile_angle);
+    Front_Left  (Hip_Right_angle, Lift_H_angle);
+    delay(120);
+    Front_Right (Hip_Right_angle, Hostile_angle);
+    Back_Right  (Hip_Left_angle, Hostile_angle);
+    Back_Left   (Hip_Left_angle, Hostile_angle);
+    Front_Left  (Hip_Right_angle, Hostile_angle);
+    delay(120);
+    Front_Right (Hip_Left_angle, Lift_H_angle);
+    Back_Right  (Hip_Default_angle, Hostile_angle);
+    Back_Left   (Hip_Right_angle, Lift_H_angle);
+    Front_Left  (Hip_Default_angle, Hostile_angle);
+    delay(120);
+    Front_Right (Hip_Left_angle, Hostile_angle);
+    Back_Right  (Hip_Right_angle, Hostile_angle);
+    Back_Left   (Hip_Right_angle, Hostile_angle);
+    Front_Left  (Hip_Left_angle, Hostile_angle);
+    delay(120);
 //-------------------------------------------------
   } else if (input == "balkneeh1"){
     gyro.calculate_PID(knee_pitch, knee_roll, hip_pitch, hip_roll, gyro.calculateDeltaTime(), 0, 0, 180);
@@ -163,6 +179,18 @@ void loop() {
     Turn_Left_Normal_L(100);
   } else if (input == "trnl"){
     Turn_Right_Normal_L(100);
+  } else if (input == "forward"){
+    Forward();
+  } else if (input == "backward"){
+    Backward();
+  } else if (input == "left"){
+    Left();
+  } else if (input == "right"){
+    Right();
+  } else if (input == "tleft"){
+    Turn_Left();
+  } else if (input == "tright"){
+    Turn_Right();  
   } else if (input == "chill"){
     Toggle_Motors();
     input = "";

@@ -85,9 +85,12 @@ void Turn_Left_Normal_R(int timeframe);
 void Turn_Right_Normal_R(int timeframe);
 void Turn_Left_Normal_L(int timeframe);
 void Turn_Right_Normal_L(int timeframe);
-void Hostile_Forward();
-void Improved_Hostile_Forward();
-void My_Forward();
+void Forward();
+void Backward();
+void Left();
+void Right();
+void Turn_Left();
+void Turn_Right();
 void Toggle_Motors();
 
 // Setup function for legs

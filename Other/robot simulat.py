@@ -63,19 +63,36 @@ fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 
 
-def_hip, def_knee = 90,60
+def_hip, def_knee = 90,35
 hip_r, hip_l = 120, 60
 knee_lift = 110
 
 motion = [
     [(def_hip, def_knee), (def_hip, def_knee), (def_hip, def_knee), (def_hip, def_knee)],
-    [(def_hip, def_knee), (def_hip, knee_lift), (def_hip, def_knee), (def_hip, knee_lift)],
-    [(def_hip, def_knee), (hip_r, knee_lift), (def_hip, def_knee), (hip_l, knee_lift)],
-    [(def_hip, def_knee), (hip_r, def_knee), (def_hip, def_knee), (hip_l, def_knee)],
-    [(def_hip, knee_lift), (def_hip, def_knee), (def_hip, knee_lift), (def_hip, def_knee)],
-    [(hip_r, knee_lift), (def_hip, def_knee), (hip_l, knee_lift), (def_hip, def_knee)],
-    [(hip_r, def_knee), (def_hip, def_knee), (hip_l, def_knee), (def_hip, def_knee)],
-    [(def_hip, def_knee), (def_hip, def_knee), (def_hip, def_knee), (def_hip, def_knee)]
+
+
+    [(def_hip, def_knee),
+     (hip_l, knee_lift), 
+     (def_hip, def_knee), 
+     (hip_r, knee_lift)],
+
+    [(hip_r, def_knee),
+     (hip_l, def_knee),
+     (hip_l, def_knee),
+     (hip_r, def_knee)],
+
+    [(hip_l, knee_lift),
+     (def_hip, def_knee),
+     (hip_r, knee_lift),
+     (def_hip, def_knee)],
+    
+    [(hip_l, def_knee),
+     (hip_r, def_knee),
+     (hip_r, def_knee),
+     (hip_l, def_knee)],
+
+
+    [(def_hip, def_knee), (def_hip, def_knee), (def_hip, def_knee), (def_hip, def_knee)],
 ]
 
 while True:

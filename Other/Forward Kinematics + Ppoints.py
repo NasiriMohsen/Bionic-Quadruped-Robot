@@ -23,6 +23,15 @@ def rotate_points(angle,x,y):
     y_rotated = x * math.sin(rotation_angle) + y * math.cos(rotation_angle)
     return x_rotated, y_rotated 
 
+possible_points = [{}, {}, {}, {}]
+for i in range(181):
+    for j in range(181):
+        x, y, z = calculate_leg_endpoint(i,j, L1, L2)
+        possible_points[0][(i, j)] = (x, y, -z)
+        possible_points[1][(i, j)] = (y, x, -z)
+        possible_points[2][(i, j)] = (-x, -y, -z)
+        possible_points[3][(i, j)] = (-y, -x, -z)
+
 square_size = 9
 half_size = square_size / 2
 bottom_z = -2.69
@@ -73,6 +82,9 @@ while True:
         ax.scatter(x_coords[0], y_coords[0], z_coords[0], color='red', s=25)
         ax.scatter(x_coords[1], y_coords[1], z_coords[1], color='red', s=25)
         ax.scatter(x_coords[-1], y_coords[-1], z_coords[-1], color='blue', s=10)
+        points = list(possible_points[i].values())
+        xp, yp, zp = zip(*points)
+        ax.scatter(xp + base_x, yp + base_y, zp + base_z, color='green', alpha=0.01, marker='o', edgecolor='none')
     ax.plot_trisurf(top_x, top_y, top_z, color='orange',alpha=0.6)
     ax.plot_trisurf(bottom_x, bottom_y, bottom_z, color='orange',alpha=0.6)
 
