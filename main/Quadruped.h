@@ -28,72 +28,60 @@
 #define Servo_max 180
 
 // Angle definitions
-#define Hip_Default_angle 90
+#define Hip_Default 90
+#define Left_Default 135
+#define Right_Default 45
+#define Point_Left_Default 110
+#define Point_Right_Default 70
 
-#define Hip_Left_angle 135
-#define Hip_Right_angle 45
-
-#define Hip_Point_Left_angle 110
-#define Hip_Point_Right_angle 70
-
-#define Hip_Movement_Left_angle 135
-#define Hip_Movement_Right_angle 45
+#define Knee_Default 60
+#define Lean_Default 100
+#define Lift_Default 100
+#define Point_Default 130
+#define Time_Default 125
 
 #define Flat_angle 110
 #define Hostile_angle 60
-#define Normal_angle 35
+#define Straight_angle 35
 #define Compressed_angle 0
 
-#define Lean_H_angle 100
-#define Lean_N_angle 110
-#define Point_H_angle 130
-#define Point_N_angle 130
-#define Lift_H_angle 90
-#define Lift_N_angle 65
-
-// Function prototypes for individual leg control
 void Front_Right(int hip, int knee);
 void Front_Left(int hip, int knee);
 void Back_Right(int hip, int knee);
 void Back_Left(int hip, int knee);
 
 // Function prototypes for poses
-void Balance_Knee(int hip, int knee, float pitch, float roll);
-void Balance_Hip(int hip, int knee, float pitch, float roll);
-void Balance_All(int hip, int knee, float knee_pitch, float knee_roll, float hip_pitch, float hip_roll);
-void Flat();
-void Hostile();
-void Normal();
-void Compressed();
-void Normal_Lean_Left();
-void Normal_Lean_Right();
-void Normal_Lean_Front();
-void Normal_Lean_Back();
-void Hostile_Point_BR();
-void Hostile_Point_FR();
-void Hostile_Point_FL();
-void Hostile_Point_BL();
-void Normal_Point_BR();
-void Normal_Point_FR();
-void Normal_Point_FL();
-void Normal_Point_BL();
-void Turn_Left_Hostile_R(int timeframe);
-void Turn_Right_Hostile_R(int timeframe);
-void Turn_Left_Hostile_L(int timeframe);
-void Turn_Right_Hostile_L(int timeframe);
-void Turn_Left_Normal_R(int timeframe);
-void Turn_Right_Normal_R(int timeframe);
-void Turn_Left_Normal_L(int timeframe);
-void Turn_Right_Normal_L(int timeframe);
-void Forward();
-void Backward();
-void Left();
-void Right();
-void Turn_Left();
-void Turn_Right();
-void Toggle_Motors();
+void Forward_L(int knee = Knee_Default, int lift = Lift_Default);
+void Forward_R(int knee = Knee_Default, int lift = Lift_Default);
+void Backward_L(int knee = Knee_Default, int lift = Lift_Default);
+void Backward_R(int knee = Knee_Default, int lift = Lift_Default);
+void Left_L(int knee = Knee_Default, int lift = Lift_Default);
+void Left_R(int knee = Knee_Default, int lift = Lift_Default);
+void Right_L(int knee = Knee_Default, int lift = Lift_Default);
+void Right_R(int knee = Knee_Default, int lift = Lift_Default);
 
-// Setup function for legs
+void Turn_Left_L(int knee = Knee_Default, int lift = Lift_Default);
+void Turn_Left_R(int knee = Knee_Default, int lift = Lift_Default);
+void Turn_Right_L(int knee = Knee_Default, int lift = Lift_Default);
+void Turn_Right_R(int knee = Knee_Default, int lift = Lift_Default);
+
+void Point_FR(int knee = Knee_Default, int point = Point_Default);
+void Point_BR(int knee = Knee_Default, int point = Point_Default);
+void Point_BL(int knee = Knee_Default, int point = Point_Default);
+void Point_FL(int knee = Knee_Default, int point = Point_Default);
+
+void Knee_Hip(int knee = Knee_Default, int hip = Hip_Default);
+
+void Front_Knees(int knee = Knee_Default, int lean = Lean_Default);
+void Back_Knees(int knee = Knee_Default, int lean = Lean_Default);
+void Left_Knees(int knee = Knee_Default, int lean = Lean_Default);
+void Right_Knees(int knee = Knee_Default, int lean = Lean_Default);
+
+void Balance_Knee(float pitch, float roll, int knee = Knee_Default, int hip = Hip_Default);
+void Balance_Hip(float pitch, float roll, int knee = Knee_Default, int hip = Hip_Default);
+void Balance_All(float knee_pitch, float knee_roll, float hip_pitch, float hip_roll, int knee = Knee_Default, int hip = Hip_Default);
+
 void Setup_Legs();
+void Toggle_Motors();
 
 #endif

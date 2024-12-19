@@ -9,7 +9,7 @@ void setup() {
     Serial.begin(115200);
 
     Setup_Legs();
-    Flat();
+    Knee_Hip(Flat_angle);
     delay(1000);
 
     if (!gyro.begin()) {
@@ -38,164 +38,141 @@ void loop() {
   }
 //------------------------------------------------- 
   if (input == "run") {
-    Front_Right (Hip_Default_angle, Hostile_angle);
-    Back_Right  (Hip_Left_angle, Lift_H_angle);
-    Back_Left   (Hip_Default_angle, Hostile_angle);
-    Front_Left  (Hip_Right_angle, Lift_H_angle);
-    delay(120);
-    Front_Right (Hip_Right_angle, Hostile_angle);
-    Back_Right  (Hip_Left_angle, Hostile_angle);
-    Back_Left   (Hip_Left_angle, Hostile_angle);
-    Front_Left  (Hip_Right_angle, Hostile_angle);
-    delay(120);
-    Front_Right (Hip_Left_angle, Lift_H_angle);
-    Back_Right  (Hip_Default_angle, Hostile_angle);
-    Back_Left   (Hip_Right_angle, Lift_H_angle);
-    Front_Left  (Hip_Default_angle, Hostile_angle);
-    delay(120);
-    Front_Right (Hip_Left_angle, Hostile_angle);
-    Back_Right  (Hip_Right_angle, Hostile_angle);
-    Back_Left   (Hip_Right_angle, Hostile_angle);
-    Front_Left  (Hip_Left_angle, Hostile_angle);
-    delay(120);
+  gyro.calculate_PID(knee_pitch, knee_roll, hip_pitch, hip_roll, gyro.calculateDeltaTime(), 0, 0, 0);
+  Front_Right(Hip_Default,   Knee_Default - knee_pitch + knee_roll);
+  Back_Right (Left_Default,  Lift_Default);
+  Back_Left  (Hip_Default,   Knee_Default + knee_pitch - knee_roll);
+  Front_Left (Right_Default, Lift_Default);
+  delay(Time_Default);
+  gyro.calculate_PID(knee_pitch, knee_roll, hip_pitch, hip_roll, gyro.calculateDeltaTime(), 0, 0, 0);
+  Front_Right(Right_Default, Knee_Default - knee_pitch + knee_roll);
+  Back_Right (Left_Default,  Knee_Default + knee_pitch + knee_roll);
+  Back_Left  (Left_Default,  Knee_Default + knee_pitch - knee_roll);
+  Front_Left (Right_Default, Knee_Default - knee_pitch - knee_roll);
+  delay(Time_Default);
+  gyro.calculate_PID(knee_pitch, knee_roll, hip_pitch, hip_roll, gyro.calculateDeltaTime(), 0, 0, 0);
+  Front_Right(Left_Default,  Lift_Default);
+  Back_Right (Hip_Default,   Knee_Default + knee_pitch + knee_roll);
+  Back_Left  (Right_Default, Lift_Default + knee_pitch - knee_roll);
+  Front_Left (Hip_Default,   Knee_Default);
+  delay(Time_Default);
+  gyro.calculate_PID(knee_pitch, knee_roll, hip_pitch, hip_roll, gyro.calculateDeltaTime(), 0, 0, 0);
+  Front_Right(Left_Default,  Knee_Default - knee_pitch + knee_roll);
+  Back_Right (Right_Default, Knee_Default + knee_pitch + knee_roll);
+  Back_Left  (Right_Default, Knee_Default + knee_pitch - knee_roll);
+  Front_Left (Left_Default,  Knee_Default - knee_pitch - knee_roll);
+  delay(Time_Default);
 //-------------------------------------------------
   } else if (input == "balkneeh1"){
     gyro.calculate_PID(knee_pitch, knee_roll, hip_pitch, hip_roll, gyro.calculateDeltaTime(), 0, 0, 180);
-    Balance_Knee(Hip_Default_angle, Hostile_angle, knee_pitch, knee_roll);
+    Balance_Knee(knee_pitch, knee_roll);
   } else if (input == "balhiph1"){
     gyro.calculate_PID(knee_pitch, knee_roll, hip_pitch, hip_roll, gyro.calculateDeltaTime(), 0, 0, 180);
-    Balance_Hip(Hip_Default_angle, Hostile_angle, hip_pitch, hip_roll);
+    Balance_Hip(hip_pitch, hip_roll);
   } else if (input == "balallh1"){
     gyro.calculate_PID(knee_pitch, knee_roll, hip_pitch, hip_roll, gyro.calculateDeltaTime(), 0, 0, 180);
-    Balance_All(Hip_Default_angle, Hostile_angle, knee_pitch, knee_roll, hip_pitch, hip_roll);
-  } else if (input == "balkneeh2"){
-    gyro.calculate_PID(knee_pitch, knee_roll, hip_pitch, hip_roll, gyro.calculateDeltaTime(), 0, 0, 0);
-    Balance_Knee(Hip_Default_angle, Hostile_angle, knee_pitch, knee_roll);
-  } else if (input == "balhiph2"){
-    gyro.calculate_PID(knee_pitch, knee_roll, hip_pitch, hip_roll, gyro.calculateDeltaTime(), 0, 0, 0);
-    Balance_Hip(Hip_Default_angle, Hostile_angle, hip_pitch, hip_roll);
-  } else if (input == "balallh2"){
-    gyro.calculate_PID(knee_pitch, knee_roll, hip_pitch, hip_roll, gyro.calculateDeltaTime(), 0, 0, 0);
-    Balance_All(Hip_Default_angle, Hostile_angle, knee_pitch, knee_roll, hip_pitch, hip_roll);
-  } else if (input == "balkneen1"){
-    gyro.calculate_PID(knee_pitch, knee_roll, hip_pitch, hip_roll, gyro.calculateDeltaTime(), 0, 0, 180);
-    Balance_Knee(Hip_Default_angle, Normal_angle, knee_pitch, knee_roll);
-  } else if (input == "balhipn1"){
-    gyro.calculate_PID(knee_pitch, knee_roll, hip_pitch, hip_roll, gyro.calculateDeltaTime(), 0, 0, 180);
-    Balance_Hip(Hip_Default_angle, Normal_angle, hip_pitch, hip_roll);
-  } else if (input == "balalln1"){
-    gyro.calculate_PID(knee_pitch, knee_roll, hip_pitch, hip_roll, gyro.calculateDeltaTime(), 0, 0, 180);
-    Balance_All(Hip_Default_angle, Normal_angle, knee_pitch, knee_roll, hip_pitch, hip_roll);
-  } else if (input == "balkneen2"){
-    gyro.calculate_PID(knee_pitch, knee_roll, hip_pitch, hip_roll, gyro.calculateDeltaTime(), 0, 0, 0);
-    Balance_Knee(Hip_Default_angle, Normal_angle, knee_pitch, knee_roll);
-  } else if (input == "balhipn2"){
-    gyro.calculate_PID(knee_pitch, knee_roll, hip_pitch, hip_roll, gyro.calculateDeltaTime(), 0, 0, 0);
-    Balance_Hip(Hip_Default_angle, Normal_angle, hip_pitch, hip_roll);
-  } else if (input == "balalln2"){
-    gyro.calculate_PID(knee_pitch, knee_roll, hip_pitch, hip_roll, gyro.calculateDeltaTime(), 0, 0, 0);
-    Balance_All(Hip_Default_angle, Normal_angle, knee_pitch, knee_roll, hip_pitch, hip_roll);
-  } else if (input == "balkneec1"){
-    gyro.calculate_PID(knee_pitch, knee_roll, hip_pitch, hip_roll, gyro.calculateDeltaTime(), 0, 0, 180);
-    Balance_Knee(Hip_Default_angle, Compressed_angle, knee_pitch, knee_roll);
-  } else if (input == "balhipc1"){
-    gyro.calculate_PID(knee_pitch, knee_roll, hip_pitch, hip_roll, gyro.calculateDeltaTime(), 0, 0, 180);
-    Balance_Hip(Hip_Default_angle, Compressed_angle, hip_pitch, hip_roll);
-  } else if (input == "balallc1"){
-    gyro.calculate_PID(knee_pitch, knee_roll, hip_pitch, hip_roll, gyro.calculateDeltaTime(), 0, 0, 180);
-    Balance_All(Hip_Default_angle, Compressed_angle, knee_pitch, knee_roll, hip_pitch, hip_roll);
-  } else if (input == "balkneec2"){
-    gyro.calculate_PID(knee_pitch, knee_roll, hip_pitch, hip_roll, gyro.calculateDeltaTime(), 0, 0, 0);
-    Balance_Knee(Hip_Default_angle, Compressed_angle, knee_pitch, knee_roll);
-  } else if (input == "balhipc2"){
-    gyro.calculate_PID(knee_pitch, knee_roll, hip_pitch, hip_roll, gyro.calculateDeltaTime(), 0, 0, 0);
-    Balance_Hip(Hip_Default_angle, Compressed_angle, hip_pitch, hip_roll);
-  } else if (input == "balallc2"){
-    gyro.calculate_PID(knee_pitch, knee_roll, hip_pitch, hip_roll, gyro.calculateDeltaTime(), 0, 0, 0);
-    Balance_All(Hip_Default_angle, Compressed_angle, knee_pitch, knee_roll, hip_pitch, hip_roll);
-  } else if (input == "balkneef1"){
-    gyro.calculate_PID(knee_pitch, knee_roll, hip_pitch, hip_roll, gyro.calculateDeltaTime(), 0, 0, 180);
-    Balance_Knee(Hip_Default_angle, Flat_angle, knee_pitch, knee_roll);
-  } else if (input == "balhipf1"){
-    gyro.calculate_PID(knee_pitch, knee_roll, hip_pitch, hip_roll, gyro.calculateDeltaTime(), 0, 0, 180);
-    Balance_Hip(Hip_Default_angle, Flat_angle, hip_pitch, hip_roll);
-  } else if (input == "balallf1"){
-    gyro.calculate_PID(knee_pitch, knee_roll, hip_pitch, hip_roll, gyro.calculateDeltaTime(), 0, 0, 180);
-    Balance_All(Hip_Default_angle, Flat_angle, knee_pitch, knee_roll, hip_pitch, hip_roll);
-  } else if (input == "balkneef2"){
-    gyro.calculate_PID(knee_pitch, knee_roll, hip_pitch, hip_roll, gyro.calculateDeltaTime(), 0, 0, 0);
-    Balance_Knee(Hip_Default_angle, Flat_angle, knee_pitch, knee_roll);
-  } else if (input == "balhipf2"){
-    gyro.calculate_PID(knee_pitch, knee_roll, hip_pitch, hip_roll, gyro.calculateDeltaTime(), 0, 0, 0);
-    Balance_Hip(Hip_Default_angle, Flat_angle, hip_pitch, hip_roll);
-  } else if (input == "balallf2"){
-    gyro.calculate_PID(knee_pitch, knee_roll, hip_pitch, hip_roll, gyro.calculateDeltaTime(), 0, 0, 0);
-    Balance_All(Hip_Default_angle, Flat_angle, knee_pitch, knee_roll, hip_pitch, hip_roll);
-  } else if (input == "flat"){
-    Flat();
-  } else if (input == "normal"){
-    Normal();
-  } else if (input == "compressed"){
-    Compressed();
-  } else if (input == "hostile"){
-    Hostile();
-  } else if (input == "nll"){
-    Normal_Lean_Left();
-  } else if (input == "nlr"){
-    Normal_Lean_Right();
-  } else if (input == "nlf"){
-    Normal_Lean_Front();
-  } else if (input == "nlb"){
-    Normal_Lean_Back();
-  } else if (input == "hpbr"){
-    Hostile_Point_BR();
-  } else if (input == "hpfr"){
-    Hostile_Point_FR();
-  } else if (input == "hpfl"){
-    Hostile_Point_FL();
-  } else if (input == "hpbl"){
-    Hostile_Point_BL();
-  } else if (input == "npbr"){
-    Normal_Point_BR();
-  } else if (input == "npfr"){
-    Normal_Point_FR();
-  } else if (input == "npfl"){
-    Normal_Point_FL();
-  } else if (input == "npbl"){
-    Normal_Point_BL();
-  } else if (input == "tlhr"){
-    Turn_Left_Hostile_R(100);
-  } else if (input == "trhr"){
-    Turn_Right_Hostile_R(100);
-  } else if (input == "tlhl"){
-    Turn_Left_Hostile_L(100);
-  } else if (input == "trhl"){
-    Turn_Right_Hostile_L(100);
-  } else if (input == "tlnr"){
-    Turn_Left_Normal_R(100);
-  } else if (input == "trnr"){
-    Turn_Right_Normal_R(100);
-  } else if (input == "tlnl"){
-    Turn_Left_Normal_L(100);
-  } else if (input == "trnl"){
-    Turn_Right_Normal_L(100);
-  } else if (input == "forward"){
-    Forward();
-  } else if (input == "backward"){
-    Backward();
-  } else if (input == "left"){
-    Left();
-  } else if (input == "right"){
-    Right();
-  } else if (input == "tleft"){
-    Turn_Left();
-  } else if (input == "tright"){
-    Turn_Right();  
+    Balance_All(knee_pitch, knee_roll, hip_pitch, hip_roll);
+  
+  } else if (input == "leenlh"){
+    Left_Knees();
+  } else if (input == "leenrh"){
+    Right_Knees();
+  } else if (input == "leenfh"){
+    Front_Knees();
+  } else if (input == "leenbh"){
+    Back_Knees();
+
+  } else if (input == "leenln"){
+    Left_Knees(Straight_angle);
+  } else if (input == "leenrn"){
+    Right_Knees(Straight_angle);
+  } else if (input == "leenfn"){
+    Front_Knees(Straight_angle);
+  } else if (input == "leenbn"){
+    Back_Knees(Straight_angle);
+  
+  } else if (input == "leenlc"){
+    Left_Knees(Compressed_angle);
+  } else if (input == "leenrc"){
+    Right_Knees(Compressed_angle);
+  } else if (input == "leenfc"){
+    Front_Knees(Compressed_angle);
+  } else if (input == "leenbc"){
+    Back_Knees(Compressed_angle);
+
+  } else if (input == "pointbrh"){
+    Point_BR();
+  } else if (input == "pointfrh"){
+    Point_FR();
+  } else if (input == "pointflh"){
+    Point_FL();
+  } else if (input == "pointblh"){
+    Point_BL();
+
+  } else if (input == "pointbrn"){
+    Point_BR(Straight_angle);
+  } else if (input == "pointfrn"){
+    Point_FR(Straight_angle);
+  } else if (input == "pointfln"){
+    Point_FL(Straight_angle);
+  } else if (input == "pointbln"){
+    Point_BL(Straight_angle);
+
+  } else if (input == "forwardlh"){
+    Forward_L();
+  } else if (input == "backwardlh"){
+    Backward_L();
+  } else if (input == "leftlh"){
+    Left_L();
+  } else if (input == "rightlh"){
+    Right_L();
+  } else if (input == "tleftlh"){
+    Turn_Left_L();
+  } else if (input == "trightlh"){
+    Turn_Right_L();  
+  } else if (input == "forwardrh"){
+    Forward_R();
+  } else if (input == "backwardrh"){
+    Backward_R();
+  } else if (input == "leftrh"){
+    Left_R();
+  } else if (input == "rightrh"){
+    Right_R();
+  } else if (input == "tleftrh"){
+    Turn_Left_R();
+  } else if (input == "trightrh"){
+    Turn_Right_R();  
+
+  } else if (input == "forwardln"){
+    Forward_L(Straight_angle);
+  } else if (input == "backwardln"){
+    Backward_L(Straight_angle);
+  } else if (input == "leftln"){
+    Left_L(Straight_angle);
+  } else if (input == "rightln"){
+    Right_L(Straight_angle);
+  } else if (input == "tleftln"){
+    Turn_Left_L(Straight_angle);
+  } else if (input == "trightln"){
+    Turn_Right_L(Straight_angle);  
+  } else if (input == "forwardrn"){
+    Forward_R(Straight_angle);
+  } else if (input == "backwardrn"){
+    Backward_R(Straight_angle);
+  } else if (input == "leftrn"){
+    Left_R(Straight_angle);
+  } else if (input == "rightrn"){
+    Right_R(Straight_angle);
+  } else if (input == "tleftrn"){
+    Turn_Left_R(Straight_angle);
+  } else if (input == "trightrn"){
+    Turn_Right_R(Straight_angle);  
+ 
   } else if (input == "chill"){
     Toggle_Motors();
     input = "";
   } else {
-    Hostile();
+    Knee_Hip();
   }
   delay(15);
 }
